@@ -21,6 +21,9 @@ class Bot:
 
     def login(self, token, log_handler):
         if not (token):
+            print(
+                "[ERROR] トークンが指定されていません。"
+            )
             raise ValueError("Improper token has been passed.")
 
         try:
@@ -29,4 +32,7 @@ class Bot:
             )
 
         except discord.errors.LoginFailure as error:
+            print(
+                "[ERROR] ログインできませんでした。トークンが正しいか確認してください。"
+            )
             raise discord.errors.LoginFailure(error)

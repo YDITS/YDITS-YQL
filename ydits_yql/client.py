@@ -27,7 +27,7 @@ class Client(discord.Client):
         def init_channels(channels):
             self.channels = channels
 
-        on_ready(self, init_channels=init_channels)
+        await on_ready(self, init_channels=init_channels)
 
     async def on_message(self, message):
         on_message(self, message=message)

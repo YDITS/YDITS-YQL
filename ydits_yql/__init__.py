@@ -3,7 +3,7 @@ from ydits_yql.bot import Bot
 
 
 __title__ = "YDITS for YQL"
-__version__ = "0.0.0"
+__version__ = "0.1.0"
 __description__ = "`yumin地震観測所` 専用に制作されたYDITS Discord BOTです。"
 __author__ = "よね/Yone"
 __copyright__ = "Copyright (C) よね/Yone"

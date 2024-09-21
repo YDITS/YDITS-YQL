@@ -31,7 +31,7 @@ class Bot:
 
         if not (token):
             print(f"[ERROR] {self.name}    | トークンが指定されていません。")
-            raise ValueError("Improper token has been passed.")
+            input("> 終了するにはいずれかのキーを押してください")
 
         print(f"[LOG  ] {self.name}    | Discord APIに接続しています...")
 
@@ -44,4 +44,4 @@ class Bot:
             print(
                 f"[ERROR] {self.name}    | Discord APIにログインできませんでした。トークンが正しいか確認してください。"
             )
-            raise discord.errors.LoginFailure(error)
+            input("> 終了するにはいずれかのキーを押してください")

@@ -17,12 +17,12 @@ async def on_ready(self, *, init_channels):
 
         except discord.errors.Forbidden as e:
             print(
-                f"[ERROR] {self.name} | {code} 用に設定されたチャンネルID {self.channels_id[code]} への送信権限がありません。\n{e}"
+                f"[ERROR] {self.name} | {code} 用に設定されたチャンネルID {self.channels_id[code]} への送信権限がありません。"
             )
 
         except Exception as e:
             print(
-                f"[ERROR] {self.name} | {code} 用に設定されたチャンネルID {self.channels_id[code]} にメッセージを送信できません:\nチャンネルIDが正しいか、送信するサーバーにBOTが参加しているかを確認してください。\n{e}"
+                f"[ERROR] {self.name} | {code} 用に設定されたチャンネルID {self.channels_id[code]} にメッセージを送信できません:\nチャンネルIDが正しいか、送信するサーバーにBOTが参加しているかを確認してください。"
             )
 
     print(

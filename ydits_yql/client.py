@@ -38,12 +38,14 @@ class Client(discord.Client):
 
         await on_ready(self, init_channels=init_channels)
 
+        print(f"[LOG  ] {self.name} | タスクを開始しています...")
+        self.tasks.start()
+
     async def on_message(self, message):
         on_message(self, message=message)
 
     async def setup_hook(self) -> None:
-        print(f"[LOG  ] {self.name} | タスクを開始しています...")
-        self.tasks.start()
+        print(f"[LOG  ] {self.name} | フックをセットアップしています...")
 
     @tasks.loop(seconds=1)
     async def tasks(self):
@@ -59,7 +61,6 @@ class Client(discord.Client):
         entries = self.xml_parser.find_all("entry")
 
         self.jma_xml.latest_id = entries[0].id.string
-        print(self.jma_xml.latest_id)
 
         if (
             self.jma_xml.latest_id != self.jma_xml.last_id

@@ -23,4 +23,6 @@ async def on_ready(self, *, init_channels):
                 f"[ERROR] {code} 用に設定されたチャンネルID {self.channels_id[code]} にメッセージを送信できません:\nチャンネルIDが正しいか、送信するサーバーにBOTが参加しているかを確認してください。\n{e}"
             )
 
+    print(f"[INFO ] 設定されたチャンネルIDの送信権限の検証が完了しました。")
+
     init_channels(channels)

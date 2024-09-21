@@ -2,9 +2,11 @@ import discord
 
 
 async def on_ready(self, *, init_channels):
-    print(f"[INFO ] Logged in as {self.user}.")
+    print(f"[INFO ] {self.user} でログインしました。")
     channels = {}
     channels["vxww50"] = self.get_channel(self.channels_id["vxww50"])
+
+    print(f"[INFO ] 設定されたチャンネルIDの送信権限を検証しています...")
 
     for code, channel in channels.items():
         try:

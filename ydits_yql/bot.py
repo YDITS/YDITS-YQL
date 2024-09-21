@@ -2,29 +2,38 @@ import logging
 import discord
 import ydits_yql
 from ydits_yql.client import Client
+from ydits_yql.lib.clear_console import clear_console
 
 
 class Bot:
     def __init__(self, *, token, log_handler, channels_id) -> None:
+        self.name = "Bot"
+
+        print(f"[LOG  ] {self.name}    | イニシャライズしています...")
+
         self.show_logo()
         intents = discord.Intents.default()
         intents.message_content = True
         self.client = Client(intents=intents, channels_id=channels_id)
-        self.login(token, log_handler)
+        self.run(token, log_handler)
 
     def show_logo(self):
+        clear_console("clear")
+
         print(
             f"{ydits_yql.__title__} Ver {ydits_yql.__version__}\n"
             f"{ydits_yql.__copyright__}\n\n"
             f"discord.py v{discord.__version__}\n\n" + "-" * 20 + "\n"
         )
 
-    def login(self, token, log_handler):
+    def run(self, token, log_handler):
+        print(f"[LOG  ] {self.name}    | トークンを検証しています...")
+
         if not (token):
-            print(
-                "[ERROR] トークンが指定されていません。"
-            )
-            raise ValueError("Improper token has been passed.")
+            print(f"[ERROR] {self.name}    | トークンが指定されていません。")
+            input("> 終了するにはいずれかのキーを押してください")
+
+        print(f"[LOG  ] {self.name}    | Discord APIに接続しています...")
 
         try:
             self.client.run(
@@ -33,6 +42,6 @@ class Bot:
 
         except discord.errors.LoginFailure as error:
             print(
-                "[ERROR] ログインできませんでした。トークンが正しいか確認してください。"
+                f"[ERROR] {self.name}    | Discord APIにログインできませんでした。トークンが正しいか確認してください。"
             )
-            raise discord.errors.LoginFailure(error)
+            input("> 終了するにはいずれかのキーを押してください")

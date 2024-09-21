@@ -1,2 +1,2 @@
 def on_message(self, *, message):
-    print(f"[LOG  ] Message from {message.author}: {message.content}")
+    print(f"[LOG  ] {message.author} からのメッセージ: {message.content}")

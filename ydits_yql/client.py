@@ -47,7 +47,7 @@ class Client(discord.Client):
 
     @tasks.loop(seconds=1)
     async def tasks(self):
-        if self.jma_request_count >= self.jma_request_interval:
+        if self.jma_request_count >= self.jma_request_interval or self.jma_request_count == -1:
             await self.jma_xml_task()
         self.jma_request_count += 1
 

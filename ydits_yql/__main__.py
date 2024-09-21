@@ -1,10 +1,13 @@
 import os
 import logging
 import ydits_yql
+from ydits_yql.lib.clear_console import clear_console
 
 
 if __name__ == "__main__":
-    os.system("clear")
+    clear_console("clear")
+
+    print(f"{ydits_yql.__title__} を起動しています...")
 
     log_handler = logging.FileHandler(
         filename="discord.log", encoding="utf-8", mode="w"

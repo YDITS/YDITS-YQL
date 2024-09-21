@@ -12,6 +12,9 @@ from ydits_yql.lib.jma_xml.vxww50 import Vxww50
 
 class Client(discord.Client):
     def __init__(self, *args, **kwargs):
+        self.name = "Client"
+        print(f"[LOG  ] {self.name} | イニシャライズしています...")
+
         super().__init__(*args, **kwargs)
 
         self.channels = {}
@@ -23,6 +26,12 @@ class Client(discord.Client):
         self.jma_request_interval = 60
         self.jma_request_count = -1
 
+    async def on_connect(self):
+        print(f"[INFO ] {self.name} | Discord APIに接続しました。")
+
+    async def on_disconnect(self):
+        print(f"[INFO ] {self.name} | Discord APIから切断されました。")
+
     async def on_ready(self):
         def init_channels(channels):
             self.channels = channels
@@ -33,6 +42,7 @@ class Client(discord.Client):
         on_message(self, message=message)
 
     async def setup_hook(self) -> None:
+        print(f"[LOG  ] {self.name} | タスクを開始しています...")
         self.tasks.start()
 
     @tasks.loop(seconds=1)
@@ -56,11 +66,14 @@ class Client(discord.Client):
             and self.jma_xml.last_id != None
         ):
             await self.on_updated_jma_xml(entries[0])
+            self.jma_xml.last_id = self.jma_xml.latest_id
             return
 
         self.jma_xml.last_id = self.jma_xml.latest_id
 
     async def on_updated_jma_xml(self, entry):
+        print(f"[LOG  ] {self.name} | JMA XMLが更新されました: {entry.title.string}")
+
         if entry.title.string == "土砂災害警戒情報":
             response = requests.get(entry.link["href"])
             response.encoding = response.apparent_encoding
@@ -73,4 +86,5 @@ class Client(discord.Client):
 
     @tasks.before_loop
     async def before_task(self):
+        print(f"[LOG  ] {self.name} | ログインを待っています...")
         await self.wait_until_ready()

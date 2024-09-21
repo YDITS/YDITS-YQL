@@ -1,6 +1,4 @@
 def on_message(self, *, message):
-    print(f"[LOG  ] {message.author} からのメッセージ: {message.content}")
-
     if is_me(self, message=message):
         return
 

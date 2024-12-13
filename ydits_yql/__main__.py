@@ -1,4 +1,3 @@
-import os
 import logging
 import ydits_yql
 from ydits_yql.lib.clear_console import clear_console

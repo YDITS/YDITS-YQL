@@ -1,6 +1,3 @@
-from ydits_yql import config
-from ydits_yql.bot import Bot
-
 
 __title__ = "YDITS for YQL"
 __version__ = "0.1.0"

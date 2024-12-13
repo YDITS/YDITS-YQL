@@ -27,21 +27,30 @@ class Bot:
         )
 
     def run(self, token, log_handler):
-        print(f"[LOG  ] {self.name}    | トークンを検証しています...")
-
-        if not (token):
-            print(f"[ERROR] {self.name}    | トークンが指定されていません。")
-            input("> 終了するにはいずれかのキーを押してください")
+        self.validate_token(token)
 
         print(f"[LOG  ] {self.name}    | Discord APIに接続しています...")
 
         try:
             self.client.run(
-                token=token, log_handler=log_handler, log_level=logging.DEBUG
+                token=token,
+                log_handler=log_handler,
+                log_level=logging.DEBUG
             )
 
         except discord.errors.LoginFailure as error:
             print(
                 f"[ERROR] {self.name}    | Discord APIにログインできませんでした。トークンが正しいか確認してください。"
             )
-            input("> 終了するにはいずれかのキーを押してください")
+            self.wait_and_exit()
+
+    def validate_token(self, token):
+        print(f"[LOG  ] {self.name}    | トークンを検証しています...")
+
+        if not (token):
+            print(f"[ERROR] {self.name}    | トークンが指定されていません。")
+            self.wait_and_exit()
+
+    def wait_and_exit(self):
+        input("> 終了するにはいずれかのキーを押してください")
+        exit()

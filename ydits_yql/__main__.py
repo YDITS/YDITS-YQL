@@ -4,7 +4,7 @@ from ydits_yql.lib.clear_console import clear_console
 
 
 if __name__ == "__main__":
-    clear_console("clear")
+    clear_console()
 
     print(f"{ydits_yql.__title__} を起動しています...")
 

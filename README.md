@@ -2,7 +2,7 @@
 
 ## 概要
 
-yumin地震観測所 (YQL) が提供する防災 Discord BOT です。
+yumin地震観測所 (YQL) が提供する防災 Discord BOT です。  
 YDITS が yumin地震観測所 用に制作・ライセンス提供しています。
 
 ## 利用方法

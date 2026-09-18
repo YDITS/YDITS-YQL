@@ -13,6 +13,7 @@ import ydits_yql
 from ydits_yql import config
 from ydits_yql.bot import Bot
 
+
 def main() -> None:
     print(f"{ydits_yql.__title__} を起動しています...")
 
@@ -27,6 +28,7 @@ def main() -> None:
         log_handler=log_handler,
         channels_id=config.DISCORD_BOT["channels"],
     )
+
 
 if __name__ == "__main__":
     main()

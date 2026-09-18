@@ -40,9 +40,7 @@ class Bot:
 
         try:
             self.client.run(
-                token=token,
-                log_handler=log_handler,
-                log_level=logging.DEBUG
+                token=token, log_handler=log_handler, log_level=logging.DEBUG
             )
 
         except discord.errors.LoginFailure as error:

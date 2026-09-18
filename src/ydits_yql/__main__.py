@@ -2,11 +2,8 @@ import logging
 import ydits_yql
 from ydits_yql import config
 from ydits_yql.bot import Bot
-from ydits_yql.lib.clear_console import clear_console
 
 def main() -> None:
-    clear_console()
-
     print(f"{ydits_yql.__title__} を起動しています...")
 
     log_handler = logging.FileHandler(

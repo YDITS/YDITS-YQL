@@ -4,8 +4,7 @@ from ydits_yql import config
 from ydits_yql.bot import Bot
 from ydits_yql.lib.clear_console import clear_console
 
-
-if __name__ == "__main__":
+def main() -> None:
     clear_console()
 
     print(f"{ydits_yql.__title__} を起動しています...")
@@ -21,3 +20,6 @@ if __name__ == "__main__":
         log_handler=log_handler,
         channels_id=config.DISCORD_BOT["channels"],
     )
+
+if __name__ == "__main__":
+    main()

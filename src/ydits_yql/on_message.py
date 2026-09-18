@@ -1,3 +1,13 @@
+"""
+
+YDITS for YQL
+
+Copyright (C) 2024-2026 よね/Yone
+
+https://github.com/YDITS/YDITS-YQL
+
+"""
+
 def on_message(self, *, message):
     if is_me(self, message=message):
         return

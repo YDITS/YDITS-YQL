@@ -8,7 +8,15 @@ https://github.com/YDITS/YDITS-YQL
 
 """
 
-DISCORD_BOT = {
+from typing import TypedDict
+
+
+class DiscordBotConfig(TypedDict):
+    token: str
+    channels: dict[str, int]
+
+
+DISCORD_BOT: DiscordBotConfig = {
     "token": "",
     "channels": {
         "vxww50": 0000000000000000000,

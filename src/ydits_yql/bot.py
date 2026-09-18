@@ -15,7 +15,9 @@ from ydits_yql.client import Client
 
 
 class Bot:
-    def __init__(self, *, token, log_handler, channels_id) -> None:
+    def __init__(
+        self, *, token: str, log_handler: logging.Handler, channels_id: dict[str, int]
+    ) -> None:
         self.name = "Bot"
 
         print(f"[LOG  ] {self.name}    | イニシャライズしています...")
@@ -26,14 +28,14 @@ class Bot:
         self.client = Client(intents=intents, channels_id=channels_id)
         self.run(token, log_handler)
 
-    def show_logo(self):
+    def show_logo(self) -> None:
         print(
             f"{ydits_yql.__title__} Ver {ydits_yql.__version__}\n"
             f"{ydits_yql.__copyright__}\n\n"
             f"discord.py v{discord.__version__}\n\n" + "-" * 20 + "\n"
         )
 
-    def run(self, token, log_handler):
+    def run(self, token: str, log_handler: logging.Handler) -> None:
         self.validate_token(token)
 
         print(f"[LOG  ] {self.name}    | Discord APIに接続しています...")
@@ -43,13 +45,13 @@ class Bot:
                 token=token, log_handler=log_handler, log_level=logging.DEBUG
             )
 
-        except discord.errors.LoginFailure as error:
+        except discord.errors.LoginFailure as _:
             print(
                 f"[ERROR] {self.name}    | Discord APIにログインできませんでした。トークンが正しいか確認してください。"
             )
             self.wait_and_exit()
 
-    def validate_token(self, token):
+    def validate_token(self, token: str):
         print(f"[LOG  ] {self.name}    | トークンを検証しています...")
 
         if not (token):

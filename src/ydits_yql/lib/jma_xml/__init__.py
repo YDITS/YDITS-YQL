@@ -9,21 +9,22 @@ https://github.com/YDITS/YDITS-YQL
 """
 
 import requests
+from typing import Optional
 
 
 class JmaXml:
     def __init__(self) -> None:
         self.uri = "https://www.data.jma.go.jp/developer/xml/feed/extra.xml"
-        self.latest_id = None
-        self.last_id = None
+        self.latest_id: Optional[str] = None
+        self.last_id: Optional[str] = None
 
-    def get(self):
+    def get(self) -> bytes:
         response = requests.get(self.uri)
         response.encoding = response.apparent_encoding
         return response.content
         # return self.debug_entry()  # DEBUG
 
-    def debug_entry(self):
+    def debug_entry(self) -> str:
         return """
             <entry>
                 <title>土砂災害警戒情報</title>

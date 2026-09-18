@@ -23,7 +23,7 @@ def main() -> None:
         mode="w",
     )
 
-    my_bot = Bot(
+    Bot(
         token=config.DISCORD_BOT["token"],
         log_handler=log_handler,
         channels_id=config.DISCORD_BOT["channels"],

@@ -1,4 +1,5 @@
 # Python related
+.venv/
 __pycache__
 *.pyc
 

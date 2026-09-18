@@ -1,0 +1,17 @@
+[project]
+name = "ydits-yql"
+version = "0.1.0"
+description = "yumin地震観測所 (YQL) が提供する防災 Discord Bot"
+readme = "README.md"
+authors = [
+    { name = "よね/Yone", email = "pypi@yoneyo.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+ydits-yql = "ydits_yql.__main__:main"
+
+[build-system]
+requires = ["uv_build>=0.12.9,<0.13.0"]
+build-backend = "uv_build"

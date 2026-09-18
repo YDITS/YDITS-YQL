@@ -12,7 +12,6 @@ import logging
 import discord
 import ydits_yql
 from ydits_yql.client import Client
-from ydits_yql.lib.clear_console import clear_console
 
 
 class Bot:
@@ -28,8 +27,6 @@ class Bot:
         self.run(token, log_handler)
 
     def show_logo(self):
-        clear_console("clear")
-
         print(
             f"{ydits_yql.__title__} Ver {ydits_yql.__version__}\n"
             f"{ydits_yql.__copyright__}\n\n"
